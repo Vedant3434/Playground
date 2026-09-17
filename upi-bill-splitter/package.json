@@ -1,0 +1,35 @@
+{
+  "name": "sub2k",
+  "version": "1.0.0",
+  "description": "Split an Indian bill into UPI payments that each stay under ₹2,000.",
+  "main": "index.ts",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.23",
+    "expo-clipboard": "~57.0.2",
+    "expo-haptics": "~57.0.3",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-qrcode-svg": "^6.3.24",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.4"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "react-dom": "^19.2.3",
+    "react-native-web": "^0.21.2",
+    "typescript": "~6.0.3",
+    "vitest": "^3.2.4"
+  }
+}
