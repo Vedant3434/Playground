@@ -64,8 +64,9 @@ npm test           # the split logic
 npm run typecheck
 ```
 
-Expo Go is enough for everything except the app-specific deep links (`tez://`,
-`phonepe://`…), which need a development build:
+Expo Go is enough to try the whole thing. The generic `upi://pay` links work
+there too; the app-specific schemes (`tez://`, `phonepe://`…) need a
+development build, because Expo Go carries its own native manifest:
 
 ```bash
 npx eas build --profile development --platform android
@@ -81,14 +82,18 @@ npx eas build --platform ios --profile production       # .ipa for App Store
 Both stores will want a privacy declaration. The honest one is short: the app
 stores your splits and settings on the device and sends nothing anywhere.
 
-### One Android caveat
+### Why `canOpenURL` is only a hint
 
-Android 11+ hides other installed apps unless they are declared in the
-manifest, so `Linking.canOpenURL` can report `false` for a UPI app that is
-installed. The code therefore *attempts* the link rather than asking first, and
-falls back to the neutral `upi://pay` chooser. If you want `canOpenURL` to work
-properly, add a `<queries>` block for the UPI schemes via a config plugin
-before building.
+Android 11+ hides other installed apps from `Linking.canOpenURL` unless they are
+declared in `<queries>`, and iOS needs the scheme in
+`LSApplicationQueriesSchemes` — which `app.json` sets for real builds but which
+Expo Go, being its own app, does not carry. Neither restriction applies to
+`openURL` itself.
+
+So `openPayment` treats `canOpenURL` as a preference, not a veto: it opens a
+confirmed link first, and otherwise attempts every candidate anyway before
+giving up. Add a `<queries>` config plugin if you want the first pass to be
+accurate on Android.
 
 ## How the splitting works
 
