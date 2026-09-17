@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Sub2K",
+    "slug": "sub2k",
+    "scheme": "sub2k",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1120"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sub2k.billsplitter",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["upi", "tez", "phonepe", "paytmmp", "bhim"]
+      }
+    },
+    "android": {
+      "package": "com.sub2k.billsplitter",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B1120",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
